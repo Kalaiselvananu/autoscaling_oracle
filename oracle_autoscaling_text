@@ -1,0 +1,116 @@
+file.json
+{
+  "instanceDetails": {
+    "instanceType": "compute"
+    "launchDetails": {
+      "compartmentId": "ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq",
+      "shape": "VM.Standard.E4.Flex",
+      "sourceDetails": {
+        "sourceType": "image",
+        "imageId": "ocid1.image.oc1.ap-singapore-1.aaaaaaaatsobczhpu6ue37l465lrdp3uwmcdhymirkivvtxbjhzkqmhnwq3a"
+      },
+      "createVnicDetails": {
+        "assignPublicIp": true
+      },
+      "displayName": "example-instance",
+    }
+  }
+}
+===========================
+compartment id:
+
+ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq
+
+
+
+
+oci compute-management instance-configuration create --compartment-id ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq --instance-details /usr/local/scripts/oraclescripts/file.json
+
+================================================
+availability-domain": wnGV:AP-SINGAPORE-1-AD-1
+
+compartment id:
+ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq
+nsg-ids: 
+"subnet-id": "ocid1.subnet.oc1.ap-singapore-1.aaaaaaaai7d7uhrb6khydnvtvg2wzz46iupmzlbpxfrje3x7abn3aopsyzfq"
+
+security group:
+ocid1.networksecuritygroup.oc1.ap-singapore-1.aaaaaaaarhcfeg5fmqvsxn3dfnkbwilv2fpt6c3zoobuh5h7smjxbhlvv6mq
+ocid1.networksecuritygroup.oc1.ap-singapore-1.aaaaaaaakzhi5ezsoufpd2ebowezhcz5b6lhjrkjq6nwyb756qreckwlhrlq
+shape:  VM.Standard.E4.Flex
+
+imageid:  ocid1.image.oc1.ap-singapore-1.aaaaaaaatsobczhpu6ue37l465lrdp3uwmcdhymirkivvtxbjhzkqmhnwq3a
+
+
+================================================
+
+
+https://gist.github.com/OblateSpheroid/ca6683f15f54def49130bcafba07ed7b
+===========================================================================
+
+# oci compute-management instance-configuration launch-compute-instance --instance-configuration-id $INST_CONFIG_OCID --launch-details '{"display-name": "inst-config-test"}'
+{ "block-volumes": null,
+  "instance-type": "compute",
+  "launch-details": {
+    "agent-config": {
+      "is-management-disabled": false,
+      "is-monitoring-disabled": false
+    },
+    "availability-domain": "wnGV:AP-SINGAPORE-1-AD-1",   #change
+    "compartment-id": "ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq",  #change
+    "create-vnic-details": {
+      "assign-public-ip": false,
+      "defined-tags": null,
+      "display-name": "basic-worker-vnic",    #change
+      "freeform-tags": null,
+      "hostname-label": null,  
+      "nsg-ids": [
+        "ocid1.networksecuritygroup.oc1.ap-singapore-1.aaaaaaaarhcfeg5fmqvsxn3dfnkbwilv2fpt6c3zoobuh5h7smjxbhlvv6mq",   #change
+        "ocid1.networksecuritygroup.oc1.ap-singapore-1.aaaaaaaakzhi5ezsoufpd2ebowezhcz5b6lhjrkjq6nwyb756qreckwlhrlq"    #change
+      ],
+      "private-ip": null,
+      "skip-source-dest-check": false,
+      "subnet-id": "ocid1.subnet.oc1.ap-singapore-1.aaaaaaaai7d7uhrb6khydnvtvg2wzz46iupmzlbpxfrje3x7abn3aopsyzfq"       #change
+    },
+    "dedicated-vm-host-id": null,
+    "defined-tags": {
+      "Jenkins-CI": {
+        "IsPrincipal": "true"
+      }
+    },
+    "display-name": "basic-worker-20200807",                    #change
+    "extended-metadata": null,					
+    "fault-domain": null,
+    "freeform-tags": null,
+    "ipxe-script": null,
+    "is-pv-encryption-in-transit-enabled": false,
+    "launch-mode": "PARAVIRTUALIZED",
+    "launch-options": {
+      "boot-volume-type": null,
+      "firmware": null,
+      "is-consistent-volume-naming-enabled": null,
+      "is-pv-encryption-in-transit-enabled": null,
+      "network-type": "PARAVIRTUALIZED",
+      "remote-data-volume-type": null
+    },
+    "metadata": null,
+    "preferred-maintenance-action": "REBOOT",
+    "shape": "VM.Standard.E4.Flex",			#change
+    "shape-config": {
+      "ocpus": 1.0
+    },
+    "source-details": {
+      "bootVolumeSizeInGBs": null,
+      "image-id": "ocid1.image.oc1.ap-singapore-1.aaaaaaaatsobczhpu6ue37l465lrdp3uwmcdhymirkivvtxbjhzkqmhnwq3a",   #change
+      "source-type": "image"					#change
+    }
+  },
+  "secondary-vnics": null
+}
+  =====================================================
+   
+  # sudo oci compute-management instance-configuration create -c ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq --instance-details file://$PWD/file.json 
+  
+ sudo oci compute-management instance-pool update --instance-pool-id ocid1.instancepool.oc1.ap-singapore-1.aaaaaaaakh5emzstbkelidkzggh4aoozehcqg5giqp5kqxkjhcaijiwwak5aocid1.instancepool.oc1.ap-singapore-1.aaaaaaaakh5emzstbkelidkzggh4aoozehcqg5giqp5kqxkjhcaijiwwak5a --instance-configuration-id ocid1.instanceconfiguration.oc1.ap-singapore-1.aaaaaaaarr3rc3cbd4lqorowk53nov7wvgrtqd6jvnsalmb44vq76tkxsyvq
+  
+# sudo oci compute-management instance-configuration launch-compute-instance --instance-configuration-id $INST_CONFIG_OCID --launch-details '{"display-name": "inst-config-test"}'
