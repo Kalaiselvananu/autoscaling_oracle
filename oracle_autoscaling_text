@@ -1,54 +1,13 @@
-file.json
-{
-  "instanceDetails": {
-    "instanceType": "compute"
-    "launchDetails": {
-      "compartmentId": "ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq",
-      "shape": "VM.Standard.E4.Flex",
-      "sourceDetails": {
-        "sourceType": "image",
-        "imageId": "ocid1.image.oc1.ap-singapore-1.aaaaaaaatsobczhpu6ue37l465lrdp3uwmcdhymirkivvtxbjhzkqmhnwq3a"
-      },
-      "createVnicDetails": {
-        "assignPublicIp": true
-      },
-      "displayName": "example-instance",
-    }
-  }
-}
-===========================
-compartment id:
-
-ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq
-
-
-
-
-oci compute-management instance-configuration create --compartment-id ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq --instance-details /usr/local/scripts/oraclescripts/file.json
 
 ================================================
-availability-domain": wnGV:AP-SINGAPORE-1-AD-1
-
-compartment id:
-ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq
-nsg-ids: 
-"subnet-id": "ocid1.subnet.oc1.ap-singapore-1.aaaaaaaai7d7uhrb6khydnvtvg2wzz46iupmzlbpxfrje3x7abn3aopsyzfq"
-
-security group:
-ocid1.networksecuritygroup.oc1.ap-singapore-1.aaaaaaaarhcfeg5fmqvsxn3dfnkbwilv2fpt6c3zoobuh5h7smjxbhlvv6mq
-ocid1.networksecuritygroup.oc1.ap-singapore-1.aaaaaaaakzhi5ezsoufpd2ebowezhcz5b6lhjrkjq6nwyb756qreckwlhrlq
-shape:  VM.Standard.E4.Flex
-
-imageid:  ocid1.image.oc1.ap-singapore-1.aaaaaaaatsobczhpu6ue37l465lrdp3uwmcdhymirkivvtxbjhzkqmhnwq3a
-
-
-================================================
-
+ref:
 
 https://gist.github.com/OblateSpheroid/ca6683f15f54def49130bcafba07ed7b
 ===========================================================================
 
-# oci compute-management instance-configuration launch-compute-instance --instance-configuration-id $INST_CONFIG_OCID --launch-details '{"display-name": "inst-config-test"}'
+
+our json file:
+==============
 { "block-volumes": null,
   "instance-type": "compute",
   "launch-details": {
@@ -56,53 +15,35 @@ https://gist.github.com/OblateSpheroid/ca6683f15f54def49130bcafba07ed7b
       "is-management-disabled": false,
       "is-monitoring-disabled": false
     },
-    "availability-domain": "wnGV:AP-SINGAPORE-1-AD-1",   #change
-    "compartment-id": "ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq",  #change
+    "availability-domain": "wnGV:AP-SINGAPORE-1-AD-1",
+    "compartment-id": "ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq",
     "create-vnic-details": {
       "assign-public-ip": false,
       "defined-tags": null,
-      "display-name": "basic-worker-vnic",    #change
+      "display-name": "basic-worker-vnic",
       "freeform-tags": null,
-      "hostname-label": null,  
-      "nsg-ids": [
-        "ocid1.networksecuritygroup.oc1.ap-singapore-1.aaaaaaaarhcfeg5fmqvsxn3dfnkbwilv2fpt6c3zoobuh5h7smjxbhlvv6mq",   #change
-        "ocid1.networksecuritygroup.oc1.ap-singapore-1.aaaaaaaakzhi5ezsoufpd2ebowezhcz5b6lhjrkjq6nwyb756qreckwlhrlq"    #change
-      ],
+      "hostname-label": null,
       "private-ip": null,
       "skip-source-dest-check": false,
-      "subnet-id": "ocid1.subnet.oc1.ap-singapore-1.aaaaaaaai7d7uhrb6khydnvtvg2wzz46iupmzlbpxfrje3x7abn3aopsyzfq"       #change
+      "subnet-id": "ocid1.subnet.oc1.ap-singapore-1.aaaaaaaai7d7uhrb6khydnvtvg2wzz46iupmzlbpxfrje3x7abn3aopsyzfq"
     },
     "dedicated-vm-host-id": null,
-    "defined-tags": {
-      "Jenkins-CI": {
-        "IsPrincipal": "true"
-      }
-    },
-    "display-name": "basic-worker-20200807",                    #change
-    "extended-metadata": null,					
+    "display-name": "basic-worker-20200807",
+    "extended-metadata": null,
     "fault-domain": null,
     "freeform-tags": null,
     "ipxe-script": null,
     "is-pv-encryption-in-transit-enabled": false,
-    "launch-mode": "PARAVIRTUALIZED",
-    "launch-options": {
-      "boot-volume-type": null,
-      "firmware": null,
-      "is-consistent-volume-naming-enabled": null,
-      "is-pv-encryption-in-transit-enabled": null,
-      "network-type": "PARAVIRTUALIZED",
-      "remote-data-volume-type": null
-    },
     "metadata": null,
     "preferred-maintenance-action": "REBOOT",
-    "shape": "VM.Standard.E4.Flex",			#change
+    "shape": "VM.Standard.E4.Flex",
     "shape-config": {
       "ocpus": 1.0
     },
     "source-details": {
       "bootVolumeSizeInGBs": null,
-      "image-id": "ocid1.image.oc1.ap-singapore-1.aaaaaaaatsobczhpu6ue37l465lrdp3uwmcdhymirkivvtxbjhzkqmhnwq3a",   #change
-      "source-type": "image"					#change
+      "image-id": "ocid1.image.oc1.ap-singapore-1.aaaaaaaayvvqyl6ihvwbttvgubz3mm7vdgdjrrvbghmvn4bh24e4x6nsvo6a",
+      "source-type": "image"
     }
   },
   "secondary-vnics": null
@@ -114,3 +55,36 @@ https://gist.github.com/OblateSpheroid/ca6683f15f54def49130bcafba07ed7b
  sudo oci compute-management instance-pool update --instance-pool-id ocid1.instancepool.oc1.ap-singapore-1.aaaaaaaakh5emzstbkelidkzggh4aoozehcqg5giqp5kqxkjhcaijiwwak5aocid1.instancepool.oc1.ap-singapore-1.aaaaaaaakh5emzstbkelidkzggh4aoozehcqg5giqp5kqxkjhcaijiwwak5a --instance-configuration-id ocid1.instanceconfiguration.oc1.ap-singapore-1.aaaaaaaarr3rc3cbd4lqorowk53nov7wvgrtqd6jvnsalmb44vq76tkxsyvq
   
 # sudo oci compute-management instance-configuration launch-compute-instance --instance-configuration-id $INST_CONFIG_OCID --launch-details '{"display-name": "inst-config-test"}'
+=========================================================
+
+autoscaling script:
+
+#!/bin/bash
+compartment_id=ocid1.tenancy.oc1..aaaaaaaa7bnoywfuq6xlwa3ffbngljn65szqcbdifhjid27aykxw7yum5twq
+instance_id=ocid1.instance.oc1.ap-singapore-1.anzwsljrosqzmlicrl6c2ynpwy4dpj2owm5tksgrmxwmq6g6srpwqfy23gza
+instance_pool_id=ocid1.instancepool.oc1.ap-singapore-1.aaaaaaaakh5emzstbkelidkzggh4aoozehcqg5giqp5kqxkjhcaijiwwak5a
+output=$(oci compute image create --compartment-id "$compartment_id" --instance-id "$instance_id")
+image_id=$(echo "$output" | jq -r '.data.id')
+echo $image_id > image_id.txt
+while true; do
+lifecycle_state=$(oci compute image get --image-id "$image_id" | jq -r '.data["lifecycle-state"]')
+echo "Lifecycle State: $lifecycle_state"
+# Check the AMI status
+    if [[ "$lifecycle_state" == "AVAILABLE" ]]; then
+    echo "Image is now AVAILABLE."
+    break
+  else
+    echo "Current image state: $lifecycle_state , Waiting for 'AVAILABLE'..."
+    sleep 10
+  fi
+done
+sed -i.bak "s/\"image-id\": \"[^\"]*\"/\"image-id\": \"$image_id\"/" "$json_file"
+#create instance configuration
+oci compute-management instance-configuration create -c "$compartment_id" --instance-details file://$PWD/file.json
+instance_config_id=$(oci compute-management instance-configuration list --compartment-id "$compartment_id" --query "data[0].id" --sort-by TIMECREATED --sort-order DESC --raw-output)
+oci compute-management instance-pool update --instance-pool-id "$instance_pool_id" --instance-configuration-id "$instance_config_id"
+
+
+
+
+
